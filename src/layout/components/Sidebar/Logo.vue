@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       title: 'Vue cemetery',
-      logo: 'http://192.168.0.110:9527/favicon.ico'
+      logo: 'http://localhost:9527/favicon.ico'
     }
   }
 }

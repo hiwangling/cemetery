@@ -201,7 +201,7 @@ export const asyncRoutes = [
       {
         path: 'grouplist',
         name: 'grouplist',
-        component: () => import('@/views/member/grouplist'),
+        component: () => import('@/views/member/role'),
         meta: { title: 'grouplist' }
       }
     ]

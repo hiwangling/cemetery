@@ -20,8 +20,8 @@
         prop="id"
         label="编号"
         align="center"
-        width="60"
-      />
+        width="60">
+      </el-table-column>
       <el-table-column
         prop="name"
         label="名称"
