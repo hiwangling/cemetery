@@ -39,7 +39,4 @@ export function CemeteryTypeList(params) {
     params
   })
 }
- 
- 
 
- 

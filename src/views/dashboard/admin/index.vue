@@ -8,8 +8,6 @@
       <line-chart :chart-data="lineChartData" />
     </el-row>
 
-
-
   </div>
 </template>
 

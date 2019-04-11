@@ -8,7 +8,7 @@ import Layout from '@/layout'
 
 /* Router Modules */
 
-import tableRouter from './modules/table'
+// import tableRouter from './modules/table'
 
 export const constantRoutes = [
   {
@@ -103,8 +103,8 @@ export const asyncRoutes = [
       }
     ]
   },
- {
- path: '/manage',
+  {
+    path: '/manage',
     component: Layout,
     redirect: '/manage/index',
     name: 'managework',
@@ -118,7 +118,7 @@ export const asyncRoutes = [
       }
     ]
   },
-   {
+  {
     path: '/sell',
     component: Layout,
     redirect: '/sell/schedulelist',
@@ -129,18 +129,18 @@ export const asyncRoutes = [
         path: 'schedulelist',
         name: 'schedulelist',
         component: () => import('@/views/sell/schedulelist'),
-        meta: { title: 'schedulelist'}
+        meta: { title: 'schedulelist' }
       },
       {
         path: 'selllist',
         name: 'selllist',
         component: () => import('@/views/sell/selllist'),
-        meta: { title: 'selllist'}
-      },
+        meta: { title: 'selllist' }
+      }
     ]
   },
 
-    {
+  {
     path: '/cemetery',
     component: Layout,
     redirect: '/cemetery/Gardenlist',
@@ -151,7 +151,7 @@ export const asyncRoutes = [
         path: 'gardenlist',
         name: 'gardenlist',
         component: () => import('@/views/cemetery/gardenlist'),
-        meta: { title: 'gardenlist'}
+        meta: { title: 'gardenlist' }
       },
       {
         path: 'arealist',
@@ -163,7 +163,7 @@ export const asyncRoutes = [
         path: 'cemeterylist',
         name: 'cemeterylist',
         component: () => import('@/views/cemetery/cemeterylist'),
-        meta: { title: 'cemeterylist'}
+        meta: { title: 'cemeterylist' }
       },
       {
         path: 'stylelist',
@@ -179,7 +179,7 @@ export const asyncRoutes = [
       }
     ]
   },
-    {
+  {
     path: '/member',
     component: Layout,
     redirect: '/member/memberlist',
@@ -190,7 +190,7 @@ export const asyncRoutes = [
         path: 'memberlist',
         name: 'memberlist',
         component: () => import('@/views/member/memberlist'),
-        meta: { title: 'memberlist'}
+        meta: { title: 'memberlist' }
       },
       {
         path: 'branchlist',
@@ -202,7 +202,7 @@ export const asyncRoutes = [
         path: 'grouplist',
         name: 'grouplist',
         component: () => import('@/views/member/grouplist'),
-        meta: { title: 'grouplist'}
+        meta: { title: 'grouplist' }
       }
     ]
   },
