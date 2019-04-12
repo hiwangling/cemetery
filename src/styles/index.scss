@@ -16,7 +16,9 @@ body {
 label {
   font-weight: 700;
 }
-
+.el-card__body{
+  padding:10px
+}
 html {
   height: 100%;
   box-sizing: border-box;
@@ -198,4 +200,8 @@ code {
 
 .multiselect--active {
   z-index: 1000 !important;
+}
+
+.el-card__header{
+    padding: 10px 20px;
 }

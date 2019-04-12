@@ -11,6 +11,7 @@ export default {
     rolePermission: 'Role Permission',
     schedulelist: 'Schedule list',
     selllist: 'Sell list',
+    area:'area',
     cemetery: 'cemetery manage',
     gardenlist: 'garden list',
     arealist: 'area list',

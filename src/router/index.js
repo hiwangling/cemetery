@@ -108,13 +108,24 @@ export const asyncRoutes = [
     component: Layout,
     redirect: '/manage/index',
     name: 'managework',
-    meta: { title: 'managework', icon: 'example' },
+    meta: { title: 'managework', icon: 'shopping' },
     children: [
       {
         path: 'index',
         name: 'Index',
         component: () => import('@/views/manage/index'),
-        meta: { title: 'manageindex', icon: 'list' }
+        meta: {
+         title: 'manageindex',
+         icon: 'shopping',
+         roles: ['GET /admin/address/list']
+       }
+      },
+       {
+        path: 'area/:id(\\d+)',
+        component: () => import('@/views/manage/area'),
+        name: 'area',
+        meta: { title: 'area', noCache: true, activeMenu: '/manage/index' },
+        hidden: true
       }
     ]
   },
@@ -123,7 +134,7 @@ export const asyncRoutes = [
     component: Layout,
     redirect: '/sell/schedulelist',
     name: 'managesell',
-    meta: { title: 'managesell', icon: 'shopping' },
+    meta: { title: 'managesell', icon: 'example' },
     children: [
       {
         path: 'schedulelist',
@@ -151,6 +162,7 @@ export const asyncRoutes = [
         path: 'gardenlist',
         name: 'gardenlist',
         component: () => import('@/views/cemetery/gardenlist'),
+      //  perms: ['GET /admin/brand/list', 'POST /admin/brand/create', 'GET /admin/brand/read', 'POST /admin/brand/update', 'POST /admin/brand/delete'],
         meta: { title: 'gardenlist' }
       },
       {
