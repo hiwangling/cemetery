@@ -1,5 +1,5 @@
 <template>
-<div class="box" contenteditable="true" v-drag v-html="innerText" @input="changeTxt" @focus="lock=true" @blur="lock=false" :style="styleobject"></div>
+<div v-if="child.status" class="box" :contenteditable="child.edit" v-drag v-html="innerText" @input="changeTxt" @focus="lock=true" @blur="lock=false" :style="styleobject"></div>
 </template>
 <script>
 export default {
@@ -75,7 +75,7 @@ export default {
         position: absolute;    
         top: 10px;
         left: 10px;
-        width: 22px;
+        width: 22px!important;
         padding: 2px 0px;
         text-align: center;
         border: 1px dashed #666;

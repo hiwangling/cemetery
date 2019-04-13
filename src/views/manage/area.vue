@@ -25,28 +25,36 @@
   width="80%"
   top="5vh"
   append-to-body>
-  <el-tabs v-model="activeName">
-    <drag-monumen label="碑文" name="monumen">
-    </drag-monumen>
+
+  <el-tabs v-model="activeName" @tab-click="handleClick">
+  	<el-tab-pane label="预定" name="res">
+    <reserve :index="index"></reserve>
+    </el-tab-pane>
+  	<el-tab-pane label="碑文" name="mon">
+    <monumen :index="index"></monumen>
+    </el-tab-pane>
   </el-tabs>
+
 </el-dialog>
 
   </div>
 </template>
 <script>
 import waves from '@/directive/waves/index.js'
-import DragMonumen from './monumen'
+import Monumen from './monumen'
+import Reserve from './reserve'
 export default {
  directives: {
     waves
   },
- components: { DragMonumen },
+ components: { Monumen , Reserve},
     data() {
 	 	return {
-            id:'',
-            title:'',
-            activeName:'1',
-            dialogVisible:false
+      id:'',
+      title:'',
+      index:'',
+      activeName:'res',
+      dialogVisible:false
 	 	}
 	 },
     created() {
@@ -57,6 +65,9 @@ export default {
           cemetery(v){
              this.dialogVisible = true
              this.title = '墓穴管理'
+          },
+         handleClick(tab, event) {
+             this.index = tab.index
           }
      }
 }
