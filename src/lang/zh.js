@@ -8,7 +8,7 @@ export default {
     pagePermission: '页面权限',
     directivePermission: '指令权限',
     managework: '墓穴操作',
-    manageindex: '墓穴预定',
+    manageindex: '公墓预定',
     area:'墓穴预定',
     managesell: '销售管理',
     schedulelist: '公墓预定管理',

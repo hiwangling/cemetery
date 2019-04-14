@@ -1,6 +1,39 @@
   <template> 
    <div>
-       <el-table
+  <el-button type="primary" class="filter-container" icon="el-icon-edit" @click="dialogFormVisible = true">预定登记</el-button>
+
+ <el-dialog :title="dialogStatus" :visible.sync="dialogFormVisible" top="5vh"
+  append-to-body>
+<el-form :inline="true" :model="reserve" class="demo-form-inline" ref="reserve" id="server">
+  <el-form-item label="预订的人" prop="buyer">
+    <el-input v-model="reserve.buyer" name="buyer" class="reserve"></el-input>
+  </el-form-item>
+  <el-form-item label="联系电话" prop="phone">
+    <el-input v-model="reserve.phone"></el-input>
+  </el-form-item>
+      <el-form-item label="预定时间"  prop="ordainbegin">
+        <el-date-picker type="date" placeholder="选择日期" value-format="yyyy-MM-dd" v-model="reserve.ordainbegin" style="width: 100%;"></el-date-picker>
+      </el-form-item>
+      <el-form-item label="到期日期" prop="ordainend">
+        <el-date-picker placeholder="选择时间" value-format="yyyy-MM-dd" v-model="reserve.ordainend" style="width: 100%;"></el-date-picker>
+      </el-form-item>
+  <el-form-item label="联系邮箱">
+    <el-input v-model="reserve.email"></el-input>
+  </el-form-item>
+     <el-form-item label="联系地址">
+    <el-input v-model="reserve.address"></el-input>
+  </el-form-item>
+     <el-form-item label="逝者关系" prop="relation">
+    <el-input v-model="reserve.relation"></el-input>
+  </el-form-item>
+</el-form>
+ <div slot="footer" class="dialog-footer">
+   <el-button type="primary" >确定</el-button>
+   <el-button @click="dialogFormVisible = false">关闭</el-button>
+  </div>
+    </el-dialog>   
+
+   <el-table
       :data="list"
       border
       fit
@@ -21,9 +54,28 @@ props: {
   },
 data() {
    return { 
+             buyer:'',
+             id:'',
+             ordainbegin:'',
+             ordainend:'',
+             phone:'',
+             ordainprice:'',
+             email:'',
+             sfz:'',
+             sex:'',
+             address:'',
+             relation:'',
+             ordaintype:'',
+             sellname:'',
+             vcdesc:'',
        listLoading:true,
        list: undefined,
        total: 0,
+       dialogFormVisible:false,
+       dialogStatus:'登记',
+       reserve:{
+        buyer:''
+       },
        listQuery: {
         cid:5226,
         page: 1,
@@ -62,6 +114,14 @@ data() {
   }
 }
 </script>
-<style>
-
+<style scoped>
+ #reserve .el-input,
+ #reserve .el-form-item__content,
+ {
+     width: 150px;
+  }
+.reserve .el-input__inner{
+    width: 150px;
+  }
+ 
 </style>

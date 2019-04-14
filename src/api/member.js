@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function memberList(data) {
   return request({
-    url: 'Cemetery/memberList',
+    url: 'memberList',
     method: 'post',
     data
   })
@@ -10,7 +10,7 @@ export function memberList(data) {
 
 export function BranchList(data) {
   return request({
-    url: 'Cemetery/BranchList',
+    url: 'BranchList',
     method: 'post',
     data
   })

@@ -40,6 +40,7 @@
   </div>
 </template>
 <script>
+import { Schedulelist } from '@/api/schedule'
 import waves from '@/directive/waves/index.js'
 import Monumen from './monumen'
 import Reserve from './reserve'
@@ -50,18 +51,29 @@ export default {
  components: { Monumen , Reserve},
     data() {
 	 	return {
-      id:'',
-      title:'',
-      index:'',
-      activeName:'res',
-      dialogVisible:false
+	 		listLoading:true,
+			  list:'',
+		      listQuery: {
+		        cid:25,
+		      },
+		      title:'',
+		      index:'',
+		      activeName:'res',
+		      dialogVisible:false
 	 	}
 	 },
     created() {
-	 	  const id = this.$route.params && this.$route.params.id
-	      this.id = id
+    	  this.getList()
+	 	//  this.listQuery.areaid = this.$route.params && this.$route.params.id
 	 },
      methods: {
+        getList() {
+	      this.listLoading = true
+	      Schedulelist(this.listQuery).then(response => {
+	        // this.list = response.list.data
+	        this.listLoading = false
+	        })
+	        },
           cemetery(v){
              this.dialogVisible = true
              this.title = '墓穴管理'
