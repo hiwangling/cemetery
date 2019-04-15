@@ -20,59 +20,62 @@
         prop="userno"
         label="工号"
         align="center"
-        width="60">
-      </el-table-column>
+        width="60"
+      />
       <el-table-column
         prop="nickname"
         label="姓名"
         align="center"
-        width="150">
-       </el-table-column>
+        width="150"
+      />
       <el-table-column
         prop="branch_name"
         label="部门"
         align="center"
-        width="200"> 
-      </el-table-column>
+        width="200"
+      />
       <el-table-column
         prop="gradename"
         label="岗位"
         align="center"
-        width="200"> 
-      </el-table-column>
-       <el-table-column
+        width="200"
+      />
+      <el-table-column
         prop="sex"
         label="性别"
         align="center"
-        width="100">
+        width="100"
+      >
         <template slot-scope="scope">
-          <span>{{ scope.row.sex == 1 ? '男' : '女'}}</span>
+          <span>{{ scope.row.sex == 1 ? '男' : '女' }}</span>
         </template>
       </el-table-column>
       <el-table-column
         prop="mobile"
         label="电话"
         align="center"
-        width="100"> 
-      </el-table-column>
+        width="100"
+      />
       <el-table-column
         prop="icno"
-        label="身份证"> 
-      </el-table-column>
+        label="身份证"
+      />
       <el-table-column
         prop="is_inside"
         label="优惠审批"
         align="center"
-        width="100"> 
-          <template slot-scope="scope">
-          <span style="color: red">{{ scope.row.is_inside == 1 ? '是' : '否'}}</span>
+        width="100"
+      >
+        <template slot-scope="scope">
+          <span style="color: red">{{ scope.row.is_inside == 1 ? '是' : '否' }}</span>
         </template>
       </el-table-column>
       <el-table-column
         prop="status"
         label="状态"
         align="center"
-        width="150">
+        width="150"
+      >
         <template slot-scope="{row}">
           <el-tag :type="row.status | statusFilter">
             {{ row.status == 1 ? '启用' : '停用' }}

@@ -1,78 +1,78 @@
 <template>
-<div v-if="child.status" class="box" :contenteditable="child.edit" v-drag v-html="innerText" @input="changeTxt" @focus="lock=true" @blur="lock=false" :style="styleobject"></div>
+  <div v-if="child.status" v-drag class="box" :contenteditable="child.edit" :style="styleobject" @input="changeTxt" @focus="lock=true" @blur="lock=false" v-html="innerText" />
 </template>
 <script>
 export default {
-   props:{
-        child:{
-            type:Object,
-            default:{
+  directives: {
+    drag: {
+      bind: function(el) {
+        const odiv = el // 获取当前元素
+        odiv.onmousedown = (e) => {
+          // 算出鼠标相对元素的位置
+          const disX = e.clientX - odiv.offsetLeft
+          const disY = e.clientY - odiv.offsetTop
 
-            }
-        },
-        styleobject:{
-            type:Object,
-            default:{
+          document.onmousemove = (e) => {
+            // 用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
+            const left = e.clientX - disX
+            const top = e.clientY - disY
 
-            }
+            // 绑定元素位置到positionX和positionY上面
+            window.positionX = top
+            window.positionY = left
+            // 移动当前元素
+            odiv.style.left = left + 'px'
+            odiv.style.top = top + 'px'
+          }
+          document.onmouseup = (e) => {
+            document.onmousemove = null
+            document.onmouseup = null
+          }
         }
-    },
-    data (){
-        return {
-            innerText:this.child.txt,
-            lock:false
-        }
-    },
-     directives: {
-        drag: {
-            bind: function (el) {
-                let odiv = el;   //获取当前元素
-                odiv.onmousedown = (e) => {
-                    //算出鼠标相对元素的位置
-                    let disX = e.clientX - odiv.offsetLeft;
-                    let disY = e.clientY - odiv.offsetTop;
-                    
-                    document.onmousemove = (e)=>{
-                        //用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
-                        let left = e.clientX - disX;    
-                        let top = e.clientY - disY;
-                      
-                        //绑定元素位置到positionX和positionY上面
-                        window.positionX = top;
-                        window.positionY = left;
-                        //移动当前元素
-                        odiv.style.left = left + 'px';
-                        odiv.style.top = top + 'px';
-                    };
-                        document.onmouseup = (e) => {
-                        document.onmousemove = null;
-                        document.onmouseup = null;
-                    };
-                };
-            }
-        }
-    },
-    watch:{
-        child:{
-            handler(newValue, oldValue) {
-                if(!this.lock) {
-                    this.innerText = this.child.txt
-                };
-        　　　},
-        　　　deep:true
-        }
-    },
-    methods:{
-        changeTxt:function(e){
-            this.child.txt = this.$el.innerHTML
-        }
+      }
     }
+  },
+  props: {
+    child: {
+      type: Object,
+      default: {
 
+      }
+    },
+    styleobject: {
+      type: Object,
+      default: {
+
+      }
     }
+  },
+  data() {
+    return {
+      innerText: this.child.txt,
+      lock: false
+    }
+  },
+  watch: {
+    child: {
+      handler(newValue, oldValue) {
+        if (!this.lock) {
+          this.innerText = this.child.txt
+        }
+      },
+      deep: true
+    }
+  },
+  methods: {
+    changeTxt: function(e) {
+      this.child.txt = this.$el.innerHTML
+    }
+  }
+
+}
 </script>
 <style scoped>
  .box{
-        position: absolute;    
+        position: absolute;
         top: 10px;
         left: 10px;
         width: 22px!important;

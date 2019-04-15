@@ -115,12 +115,12 @@ export const asyncRoutes = [
         name: 'Index',
         component: () => import('@/views/manage/index'),
         meta: {
-         title: 'manageindex',
-         icon: 'shopping',
-         roles: ['GET /admin/address/list']
-       }
+          title: 'manageindex',
+          icon: 'shopping',
+          roles: ['GET /admin/address/list']
+        }
       },
-       {
+      {
         path: 'area/:id(\\d+)',
         component: () => import('@/views/manage/area'),
         name: 'area',
@@ -162,7 +162,7 @@ export const asyncRoutes = [
         path: 'gardenlist',
         name: 'gardenlist',
         component: () => import('@/views/cemetery/gardenlist'),
-      //  perms: ['GET /admin/brand/list', 'POST /admin/brand/create', 'GET /admin/brand/read', 'POST /admin/brand/update', 'POST /admin/brand/delete'],
+        //  perms: ['GET /admin/brand/list', 'POST /admin/brand/create', 'GET /admin/brand/read', 'POST /admin/brand/update', 'POST /admin/brand/delete'],
         meta: { title: 'gardenlist' }
       },
       {

@@ -20,30 +20,30 @@
         prop="id"
         label="编号"
         align="center"
-        width="60">
-      </el-table-column>
+        width="60"
+      />
       <el-table-column
         prop="name"
         label="名称"
         align="center"
-        width="150">
-       </el-table-column>
+        width="150"
+      />
       <el-table-column
         prop="phone"
         label="联系电话"
-        align="center"> 
-      </el-table-column>
+        align="center"
+      />
       <el-table-column
         prop="managername"
         label="负责人"
         align="center"
-        width="200"> 
-      </el-table-column>
-       <el-table-column
+        width="200"
+      />
+      <el-table-column
         prop="office"
         label="办公地点"
-        align="center">
-      </el-table-column>
+        align="center"
+      />
       <el-table-column label="操作" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="{row}">
           <el-button type="primary" @click="handleUpdate(row)">

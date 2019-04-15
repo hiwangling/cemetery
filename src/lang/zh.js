@@ -9,7 +9,7 @@ export default {
     directivePermission: '指令权限',
     managework: '墓穴操作',
     manageindex: '公墓预定',
-    area:'墓穴预定',
+    area: '墓穴预定',
     managesell: '销售管理',
     schedulelist: '公墓预定管理',
     selllist: '公墓订单管理',
