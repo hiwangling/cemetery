@@ -19,11 +19,11 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'roles'
+      'perms'
     ])
   },
   created() {
-    if (!this.roles.includes('*')) {
+    if (!this.perms.includes('*')) {
       this.currentRole = 'editorDashboard'
     }
   }
