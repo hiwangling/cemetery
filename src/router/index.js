@@ -70,8 +70,7 @@ export const asyncRoutes = [
     alwaysShow: true, // will always show the root menu
     meta: {
       title: 'permission',
-      icon: 'lock',
-      roles: ['admin', 'editor'] // you can set roles in root nav
+      icon: 'lock'
     },
     children: [
       {
@@ -103,118 +102,69 @@ export const asyncRoutes = [
       }
     ]
   },
-  {
-    path: '/manage',
-    component: Layout,
-    redirect: '/manage/index',
-    name: 'managework',
-    meta: { title: 'managework', icon: 'shopping' },
-    children: [
-      {
-        path: 'index',
-        name: 'Index',
-        component: () => import('@/views/manage/index'),
-        meta: {
-          title: 'manageindex',
-          icon: 'shopping',
-          roles: ['GET /admin/address/list']
-        }
-      },
-      {
-        path: 'area/:id(\\d+)',
-        component: () => import('@/views/manage/area'),
-        name: 'area',
-        meta: { title: 'area', noCache: true, activeMenu: '/manage/index' },
-        hidden: true
-      }
-    ]
-  },
-  {
-    path: '/sell',
-    component: Layout,
-    redirect: '/sell/schedulelist',
-    name: 'managesell',
-    meta: { title: 'managesell', icon: 'example' },
-    children: [
-      {
-        path: 'schedulelist',
-        name: 'schedulelist',
-        component: () => import('@/views/sell/schedulelist'),
-        meta: { title: 'schedulelist' }
-      },
-      {
-        path: 'selllist',
-        name: 'selllist',
-        component: () => import('@/views/sell/selllist'),
-        meta: { title: 'selllist' }
-      }
-    ]
-  },
-
-  {
-    path: '/cemetery',
-    component: Layout,
-    redirect: '/cemetery/Gardenlist',
-    name: 'cemetery',
-    meta: { title: 'cemetery', icon: 'component' },
-    children: [
-      {
-        path: 'gardenlist',
-        name: 'gardenlist',
-        component: () => import('@/views/cemetery/gardenlist'),
-        //  perms: ['GET /admin/brand/list', 'POST /admin/brand/create', 'GET /admin/brand/read', 'POST /admin/brand/update', 'POST /admin/brand/delete'],
-        meta: { title: 'gardenlist' }
-      },
-      {
-        path: 'arealist',
-        name: 'arealist',
-        component: () => import('@/views/cemetery/arealist'),
-        meta: { title: 'arealist' }
-      },
-      {
-        path: 'cemeterylist',
-        name: 'cemeterylist',
-        component: () => import('@/views/cemetery/cemeterylist'),
-        meta: { title: 'cemeterylist' }
-      },
-      {
-        path: 'stylelist',
-        name: 'stylelist',
-        component: () => import('@/views/cemetery/stylelist'),
-        meta: { title: 'stylelist' }
-      },
-      {
-        path: 'typelist',
-        name: 'typelist',
-        component: () => import('@/views/cemetery/typelist'),
-        meta: { title: 'typelist' }
-      }
-    ]
-  },
+  // {
+  //   path: '/manage',
+  //   component: Layout,
+  //   redirect: '/manage/index',
+  //   name: 'managework',
+  //   meta: { title: 'managework', icon: 'shopping' },
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Index',
+  //       component: () => import('@/views/manage/index'),
+  //       meta: {
+  //         title: 'manageindex',
+  //         icon: 'shopping',
+  //         perms: ['POST /api/v1/manager/list']
+  //       }
+  //     },
+  //     {
+  //       path: 'area/:id(\\d+)',
+  //       component: () => import('@/views/manage/area'),
+  //       name: 'area',
+  //       meta: { title: 'area', noCache: true, activeMenu: '/manage/index' },
+  //       hidden: true
+  //     }
+  //   ]
+  // },
   {
     path: '/member',
     component: Layout,
-    redirect: '/member/memberlist',
-    name: 'member',
+    redirect: 'member',
+    alwaysShow: true,
+    name: 'userManage',
     meta: { title: 'member', icon: 'peoples' },
     children: [
       {
-        path: 'memberlist',
-        name: 'memberlist',
-        component: () => import('@/views/member/memberlist'),
-        meta: { title: 'memberlist' }
-      },
-      {
-        path: 'branchlist',
-        name: 'branchlist',
-        component: () => import('@/views/member/branchlist'),
-        meta: { title: 'branchlist' }
+        path: 'role',
+        name: 'role',
+        component: () => import('@/views/member/role'),
+        meta: { 
+          title: 'grouplist',
+          noCache: true,
+          perms: ['POST /api/v1/auth_rule/list']
+           }
       },
       {
         path: 'grouplist',
         name: 'grouplist',
-        component: () => import('@/views/member/role'),
-        meta: { title: 'grouplist' }
+        component: () => import('@/views/member/grouplist'),
+        meta: { 
+          title: 'branchlist',
+          noCache: true,
+          perms: ['POST /api/v1/branch/list']
+           }
+      },
+      {
+        path: 'memberlist',
+        name: 'memberlist',
+        component: () => import('@/views/member/memberlist'),
+        meta: {
+         title: 'memberlist',
+         noCache: true,
+         perms: ['POST /api/v1/manager/list']
+         }
       }
     ]
   },

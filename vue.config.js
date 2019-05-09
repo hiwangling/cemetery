@@ -30,17 +30,17 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    proxy: {
-      // change xxx-api/login => mock/login
-      // detail: https://cli.vuejs.org/config/#devserver-proxy
-      [process.env.VUE_APP_BASE_API]: {
-        target: `http://127.0.0.1/yccqy/public/index.php`,
-        changeOrigin: true,
-        pathRewrite: {
-          ['^' + process.env.VUE_APP_BASE_API]: ''
-        }
-      }
-    },
+    // proxy: {
+    //   // change xxx-api/login => mock/login
+    //   // detail: https://cli.vuejs.org/config/#devserver-proxy
+    //   [process.env.VUE_APP_BASE_API]: {
+    //     target: `http://test9.ycjlwlkj.com/api/v1`,
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       ['^' + process.env.VUE_APP_BASE_API]: ''
+    //     }
+    //   }
+    // },
     after: require('./mock/mock-server.js')
   },
   configureWebpack: {

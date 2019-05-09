@@ -7,6 +7,7 @@ const state = {
   name: '',
   avatar: '',
   introduction: '',
+  perms: [],
   roles: []
 }
 
@@ -22,6 +23,9 @@ const mutations = {
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
+  },
+  SET_PERMS: (state, perms) => {
+    state.perms = perms
   },
   SET_ROLES: (state, roles) => {
     state.roles = roles
@@ -48,23 +52,17 @@ const actions = {
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
-        const { data } = response
+       const data = response.data
+       if (data.perms && data.perms.length > 0) { // 验证返回的perms是否是一个非空数组
+            commit('SET_PERMS', data.perms)
 
-        if (!data) {
-          reject('Verification failed, please Login again.')
+        } else {
+            reject('getInfo: perms must be a non-null array !')
         }
-
-        const { roles, name, avatar, introduction } = data
-
-        // roles must be a non-empty array
-        if (!roles || roles.length <= 0) {
-          reject('getInfo: roles must be a non-null array!')
-        }
-
-        commit('SET_ROLES', roles)
-        commit('SET_NAME', name)
-        commit('SET_AVATAR', avatar)
-        commit('SET_INTRODUCTION', introduction)
+        commit('SET_ROLES', data.roles)
+        commit('SET_NAME', data.manager_info.username)
+        commit('SET_AVATAR', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?')
+        commit('SET_INTRODUCTION', data.manager_info.email)
         resolve(data)
       }).catch(error => {
         reject(error)

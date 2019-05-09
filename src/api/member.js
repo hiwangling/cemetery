@@ -1,16 +1,40 @@
 import request from '@/utils/request'
 
-export function memberList(data) {
+export function listAdmin(query) {
   return request({
-    url: 'memberList',
+    url: '/branch/list',
+    method: 'post',
+    params: query
+  })
+}
+
+export function createAdmin(data) {
+  return request({
+    url: '/branch/create',
     method: 'post',
     data
   })
 }
 
-export function BranchList(data) {
+export function readminAdmin(data) {
   return request({
-    url: 'BranchList',
+    url: '/branch/readmin',
+    method: 'get',
+    data
+  })
+}
+
+export function updateAdmin(data) {
+  return request({
+    url: '/branch/update',
+    method: 'post',
+    data
+  })
+}
+
+export function deleteAdmin(data) {
+  return request({
+    url: '/branch/delete',
     method: 'post',
     data
   })

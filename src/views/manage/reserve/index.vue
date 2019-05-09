@@ -10,7 +10,7 @@
     >
       <el-form id="server" ref="reserve" :inline="true" :model="reserve" class="demo-form-inline">
         <el-form-item label="预订的人" prop="buyer">
-          <el-input v-model="reserve.buyer" name="buyer" class="reserve" />
+          <el-input v-model="reserve.buyer" name="buyer" />
         </el-form-item>
         <el-form-item label="联系电话" prop="phone">
           <el-input v-model="reserve.phone" />
@@ -118,14 +118,12 @@ export default {
   }
 }
 </script>
-<style scoped>
- #reserve .el-input,
- #reserve .el-form-item__content,
- {
-     width: 150px;
-  }
-.reserve .el-input__inner{
+<style lang="scss">
+#server{
+  .el-input__inner{
     width: 150px;
   }
+}
+ 
 
 </style>
