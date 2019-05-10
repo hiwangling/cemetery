@@ -10,7 +10,7 @@ export function listRole(query) {
 
 export function createRole(data) {
   return request({
-    url: '/role/create',
+    url: '/branch/add',
     method: 'post',
     data
   })
@@ -42,7 +42,7 @@ export function deleteRole(data) {
 
 export function getPermission(query) {
   return request({
-    url: '/role/permissions',
+    url: '/auth_rule/all',
     method: 'get',
     params: query
   })
@@ -50,7 +50,7 @@ export function getPermission(query) {
 
 export function updatePermission(data) {
   return request({
-    url: '/role/permissions',
+    url: '/branch/auth',
     method: 'post',
     data
   })

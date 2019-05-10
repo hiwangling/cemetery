@@ -109,11 +109,9 @@ export default {
   check:function(v){
     this.content.forEach((n,k)=>{
       if(n.id === v.id){
-         n.txt = checkdate(v.value)
+      n.txt = v.value == null ? '' : checkdate(v.value)
       }
     })
- 
- 
   }
   }
 }

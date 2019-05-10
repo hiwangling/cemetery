@@ -12,7 +12,7 @@
     <el-table v-loading="listLoading" :data="list" element-loading-text="正在查询中。。。" border fit highlight-current-row>
       <el-table-column align="center" label="角色名称" prop="branch_name" />
 
-      <el-table-column align="center" label="说明" prop="desc"/>
+      <el-table-column align="center" label="说明" prop="id"/>
 
       <el-table-column align="center" label="操作" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -28,12 +28,12 @@
     <!-- 添加或修改对话框 -->
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :rules="rules" :model="dataForm" status-icon label-position="left" label-width="100px" style="width: 400px; margin-left:50px;">
-        <el-form-item label="角色名称" prop="name">
+        <el-form-item label="角色名称" prop="branch_name">
           <el-input v-model="dataForm.branch_name"/>
         </el-form-item>
-        <el-form-item label="说明" prop="desc">
+<!--         <el-form-item label="说明" prop="desc">
           <el-input v-model="dataForm.desc"/>
-        </el-form-item>
+        </el-form-item> -->
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取消</el-button>
@@ -49,11 +49,11 @@
         :data="systemPermissions"
         :default-checked-keys="assignedPermissions"
         show-checkbox
-        node-key="id"
+        node-key="ids"
         highlight-current>
         <span slot-scope="{ node, data }" class="custom-tree-node">
-          <span>{{ data.label }}</span>
-          <el-tag v-if="data.api" type="success" size="mini">{{ data.api }}</el-tag>
+          <span>{{ data.title }}</span>
+          <el-tag v-if="data.url" type="success" size="mini">{{ data.url }}</el-tag>
         </span>
       </el-tree>
       <div slot="footer" class="dialog-footer">
@@ -85,8 +85,7 @@ export default {
       },
       dataForm: {
         id: undefined,
-        name: undefined,
-        desc: undefined
+        name: undefined
       },
       dialogFormVisible: false,
       dialogStatus: '',
@@ -103,7 +102,7 @@ export default {
       systemPermissions: null,
       assignedPermissions: null,
       permissionForm: {
-        roleId: undefined,
+        id: undefined,
         permissions: []
       }
     }
@@ -220,15 +219,19 @@ export default {
     },
     handlePermission(row) {
       this.permissionDialogFormVisible = true
-      this.permissionForm.roleId = row.id
-      getPermission({ roleId: row.id })
+      this.permissionForm.id = row.id
+      getPermission({ id: row.id })
         .then(response => {
-          this.systemPermissions = response.data.data.systemPermissions
-          this.assignedPermissions = response.data.data.assignedPermissions
+          this.systemPermissions = response.data.systemPermissions
+          this.assignedPermissions = response.data.assignedPermissions
         })
     },
     updatePermission() {
-      this.permissionForm.permissions = this.$refs.tree.getCheckedKeys(true)
+      let prem = this.$refs.tree.getCheckedNodes(true)
+      this.permissionForm.permissions = []
+      for (let i = 0; i < prem.length; i++) {
+          this.permissionForm.permissions.push(prem[i].id)
+      }
       updatePermission(this.permissionForm)
         .then(response => {
           this.permissionDialogFormVisible = false

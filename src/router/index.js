@@ -102,32 +102,37 @@ export const asyncRoutes = [
       }
     ]
   },
-  // {
-  //   path: '/manage',
-  //   component: Layout,
-  //   redirect: '/manage/index',
-  //   name: 'managework',
-  //   meta: { title: 'managework', icon: 'shopping' },
-  //   children: [
-  //     {
-  //       path: 'index',
-  //       name: 'Index',
-  //       component: () => import('@/views/manage/index'),
-  //       meta: {
-  //         title: 'manageindex',
-  //         icon: 'shopping',
-  //         perms: ['POST /api/v1/manager/list']
-  //       }
-  //     },
-  //     {
-  //       path: 'area/:id(\\d+)',
-  //       component: () => import('@/views/manage/area'),
-  //       name: 'area',
-  //       meta: { title: 'area', noCache: true, activeMenu: '/manage/index' },
-  //       hidden: true
-  //     }
-  //   ]
-  // },
+  {
+    path: '/manage',
+    component: Layout,
+    redirect: '/manage/index',
+    name: 'managework',
+    meta: { title: 'managework', icon: 'shopping' },
+    children: [
+      {
+        path: 'index',
+        name: 'Index',
+        component: () => import('@/views/manage/index'),
+        meta: {
+          title: 'manageindex',
+          icon: 'shopping',
+          perms: ['POST /api/v1/manager/list']
+        }
+      },
+      {
+        path: 'area/:id(\\d+)',
+        component: () => import('@/views/manage/area'),
+        name: 'area',
+        meta: { 
+          title: 'area', 
+          noCache: true, 
+          activeMenu: '/manage/index' ,
+          perms: ['POST /api/v1/manager/list']
+        },
+        hidden: true
+      }
+    ]
+  },
   {
     path: '/member',
     component: Layout,

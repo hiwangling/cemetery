@@ -18,7 +18,7 @@ export default {
     arealist: '墓区列表',
     stylelist: '样式列表',
     typelist: '类型列表',
-    member: '用户管理',
+    member: '系统设置',
     memberlist: '员工管理',
     branchlist: '部门管理',
     grouplist: '权限管理',

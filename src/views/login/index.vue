@@ -80,11 +80,9 @@
 
 <script>
 import LangSelect from '@/components/LangSelect'
-import SocialSign from './socialSignin'
-
 export default {
   name: 'Login',
-  components: { LangSelect, SocialSign },
+  components: { LangSelect },
   data() {
     const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
@@ -95,7 +93,7 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
+        username: 'admin1',
         password: '123456'
       },
       loginRules: {

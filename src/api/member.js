@@ -2,8 +2,8 @@ import request from '@/utils/request'
 
 export function listAdmin(query) {
   return request({
-    url: '/branch/list',
-    method: 'post',
+    url: '/manager/list',
+    method: 'get',
     params: query
   })
 }
@@ -26,7 +26,7 @@ export function readminAdmin(data) {
 
 export function updateAdmin(data) {
   return request({
-    url: '/branch/update',
+    url: '/branch/auth',
     method: 'post',
     data
   })
