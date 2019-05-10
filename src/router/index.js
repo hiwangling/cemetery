@@ -14,7 +14,7 @@ export const constantRoutes = [
   {
     path: '/redirect',
     component: Layout,
-    hidden: true, 
+    hidden: true,
     children: [
       {
         path: '/redirect/:path*',
@@ -123,10 +123,10 @@ export const asyncRoutes = [
         path: 'area/:id(\\d+)',
         component: () => import('@/views/manage/area'),
         name: 'area',
-        meta: { 
-          title: 'area', 
-          noCache: true, 
-          activeMenu: '/manage/index' ,
+        meta: {
+          title: 'area',
+          noCache: true,
+          activeMenu: '/manage/index',
           perms: ['POST /api/v1/manager/list']
         },
         hidden: true
@@ -145,31 +145,31 @@ export const asyncRoutes = [
         path: 'role',
         name: 'role',
         component: () => import('@/views/member/role'),
-        meta: { 
+        meta: {
           title: 'grouplist',
           noCache: true,
           perms: ['POST /api/v1/auth_rule/list']
-           }
+        }
       },
       {
         path: 'grouplist',
         name: 'grouplist',
         component: () => import('@/views/member/grouplist'),
-        meta: { 
+        meta: {
           title: 'branchlist',
           noCache: true,
           perms: ['POST /api/v1/branch/list']
-           }
+        }
       },
       {
         path: 'memberlist',
         name: 'memberlist',
         component: () => import('@/views/member/memberlist'),
         meta: {
-         title: 'memberlist',
-         noCache: true,
-         perms: ['POST /api/v1/manager/list']
-         }
+          title: 'memberlist',
+          noCache: true,
+          perms: ['POST /api/v1/manager/list']
+        }
       }
     ]
   },
